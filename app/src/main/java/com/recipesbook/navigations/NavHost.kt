@@ -13,6 +13,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.recipesbook.favourites.Favourite
 
 @Composable
 fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostController) {
@@ -28,7 +29,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             Home()
         }
         composable(route = RecipesBookScreen.Favourites.name) {
-            Text(text = "We are building the favourites page here")
+            Favourite()
         }
         composable(route = RecipesBookScreen.Vault.name) {
             Text(text = "We are building the vault page here")
