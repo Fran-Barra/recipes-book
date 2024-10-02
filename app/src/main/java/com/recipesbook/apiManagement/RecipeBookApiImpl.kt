@@ -1,11 +1,13 @@
 package com.recipesbook.apiManagement
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.recipesbook.DetailedRecipeModel
 import com.recipesbook.R
 import com.recipesbook.RecipeModel
+import com.recipesbook.RecipeRandomResponse
 import retrofit.Call
 import retrofit.Callback
 import retrofit.GsonConverterFactory
@@ -15,8 +17,8 @@ import javax.inject.Inject
 
 
 class RecipeBookApiImpl @Inject constructor() {
-    fun getRandom(callbacks: RequestResponseCallbacks<RecipeModel>) {
-        val call: Call<RecipeModel> = createService(callbacks.context).getRandom()
+    fun getRandom(callbacks: RequestResponseCallbacks<RecipeRandomResponse>) {
+        val call: Call<RecipeRandomResponse> = createService(callbacks.context).getRandom()
         manageCall(call, callbacks, R.string.fail_recipe_retrieve)
     }
 
