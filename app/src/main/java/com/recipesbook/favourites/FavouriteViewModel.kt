@@ -2,6 +2,7 @@ package com.recipesbook.favourites
 
 import androidx.lifecycle.ViewModel
 import com.recipesbook.RecipeModel
+import com.recipesbook.apiManagement.RecipeBookApiImpl
 import com.recipesbook.apiManagement.RecipesBookApi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -9,7 +10,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import javax.inject.Inject
 
 @HiltViewModel
-class FavouriteViewModel @Inject constructor(private val api : RecipesBookApi) : ViewModel() {
+class FavouriteViewModel @Inject constructor(private val api : RecipeBookApiImpl) : ViewModel() {
     private val _loadingFavourites = MutableStateFlow(false)
     val loadingFavourite = _loadingFavourites.asStateFlow()
 
