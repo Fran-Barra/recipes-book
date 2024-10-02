@@ -12,7 +12,9 @@ import androidx.navigation.compose.rememberNavController
 import com.recipesbook.navigations.BottomBar
 import com.recipesbook.navigations.NavHostComposable
 import com.recipesbook.ui.theme.RecipesBookTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint()
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
