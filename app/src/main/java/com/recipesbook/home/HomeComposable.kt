@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.AsyncImage
 import com.recipesbook.RecipeModel
+import com.recipesbook.composable.common.RecipeCard
 import com.recipesbook.home.RandomsViewModel
 
 
@@ -49,44 +50,6 @@ fun Home() {
             }
         }
     }
-}
-
-@Composable
-fun RecipeCard(
-    recipeModel: RecipeModel,
-    modifier: Modifier = Modifier
-        .fillMaxWidth()
-        .wrapContentHeight()
-) {
-    //strCategory
-    //strArea
-    //strYoutube
-    Button(
-        onClick = { /*TODO*/},
-        modifier = modifier,
-        shape = RoundedCornerShape(16.dp)
-    ) {
-
-        Column(
-            verticalArrangement = Arrangement.Center,
-            modifier = Modifier.fillMaxWidth()
-        ) {
-            RecipeImage(imgUrl = recipeModel.imageUrl)
-            Text(text = recipeModel.name, modifier = Modifier.padding(8.dp))
-        }
-    }
-}
-
-@Composable
-fun RecipeImage(imgUrl: String) {
-    AsyncImage(
-        model = imgUrl,
-        contentDescription = "Recipe Image",
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(250.dp),
-        contentScale = ContentScale.Crop
-    )
 }
 
 @Preview
