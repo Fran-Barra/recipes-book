@@ -12,6 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.recipesbook.RecipeModel
@@ -53,4 +54,14 @@ fun RecipeImage(imgUrl: String) {
             .height(250.dp),
         contentScale = ContentScale.Crop
     )
+}
+
+@Preview
+@Composable
+fun PreviewCard() {
+    RecipeCard(RecipeModel(
+        "4234",
+        "test card",
+        "https://www.themealdb.com/images/media/meals/1bsv1q1560459826.jpg"
+    ))
 }
