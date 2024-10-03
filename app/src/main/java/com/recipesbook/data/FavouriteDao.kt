@@ -9,9 +9,9 @@ import androidx.room.Query
 @Dao
 interface FavouriteDao {
     @Insert
-    suspend fun insert(friend: Favourite)
+    suspend fun insert(favourite: Favourite)
     @Delete
-    suspend fun delete(friend: Favourite)
+    suspend fun delete(favourite: Favourite)
     @Query("SELECT * FROM favourites")
     fun getAllFavourites(): LiveData<List<Favourite>>
 

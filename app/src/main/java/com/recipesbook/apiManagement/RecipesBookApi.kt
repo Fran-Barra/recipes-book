@@ -12,5 +12,5 @@ interface RecipesBookApi {
     fun getRandom(): Call<RecipeRandomResponse>
 
     @GET("lookup.php?i={identifier}")
-    fun getDetailedModel(@Path("identifier") identifier : Int): Call<DetailedRecipeModel>
+    fun getDetailedModel(@Path("identifier") identifier : String): Call<DetailedRecipeModel>
 }

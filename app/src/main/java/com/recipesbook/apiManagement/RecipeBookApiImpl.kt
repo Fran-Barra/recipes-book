@@ -22,7 +22,7 @@ class RecipeBookApiImpl @Inject constructor() {
         manageCall(call, callbacks, R.string.fail_recipe_retrieve)
     }
 
-    fun getDetailedModel(id: Int, callbacks: RequestResponseCallbacks<DetailedRecipeModel>) {
+    fun getDetailedModel(id: String, callbacks: RequestResponseCallbacks<DetailedRecipeModel>) {
         val call: Call<DetailedRecipeModel> = createService(callbacks.context).getDetailedModel(id)
         manageCall(call, callbacks, R.string.fail_recipe_retrieve)
     }
