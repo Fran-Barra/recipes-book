@@ -1,11 +1,13 @@
 package com.recipesbook.navigations
 
 import Home
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -32,14 +34,24 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             Favourite()
         }
         composable(route = RecipesBookScreen.Vault.name) {
-            Text(text = "We are building the vault page here")
+            Box(modifier = Modifier.fillMaxSize()) {
+                Text(
+                    text = "We are building the vault page here",
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
         }
         composable(
             route = "${RecipesBookScreen.Recipe.name}/{recipe-id}",
             arguments = listOf(navArgument("recipe-id") { type = NavType.StringType})
         ) { backStackEntry ->
             val recipeId = backStackEntry.arguments?.getString("recipe-id")
-            Text(text = "We are building the recipe page for recipe ID: $recipeId")
+            Box(modifier = Modifier.fillMaxSize()) {
+                Text(
+                    text = "We are building the recipe page for recipe ID: $recipeId",
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
         }
     }
 }

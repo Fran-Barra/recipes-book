@@ -50,7 +50,7 @@ fun TabView(
                 icon = { Icon(
                     imageVector = item.icon,
                     contentDescription = item.screen.name,
-                    tint = if (i == selectedTabIndex) Color.Black else Color.White
+                    tint = if (i == selectedTabIndex) Color.Black else Color.Gray
                 )}
             )
         }
