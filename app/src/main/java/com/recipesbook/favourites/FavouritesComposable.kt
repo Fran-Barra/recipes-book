@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.recipesbook.RecipeModel
+import com.recipesbook.composable.common.CircularLoader
 import com.recipesbook.composable.common.RecipeCard
 
 @Composable
@@ -25,9 +26,8 @@ fun Favourite() {
     val loadingFavourites by viewModel.loadingFavourite.collectAsState();
     val showRetry by viewModel.showRetry.collectAsState();
 
-    if (loadingFavourites) {
-        //TODO("loading randoms icon")
-    } else if (showRetry) {
+    if (loadingFavourites) CircularLoader()
+    else if (showRetry) {
         TODO("show retry icon")
     } else {
         Log.d("DEBUG", "FINISHED LOADING")
@@ -39,7 +39,10 @@ fun Favourite() {
             items(favourites) { recipe ->
                 RecipeCard(
                     RecipeModel(recipe.idMeal, recipe.name, recipe.imageUrl),
-                    Modifier.fillMaxHeight(0.5f).fillMaxWidth().padding(8.dp)
+                    Modifier
+                        .fillMaxHeight(0.5f)
+                        .fillMaxWidth()
+                        .padding(8.dp)
                 )
             }
         }
