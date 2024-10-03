@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.annotation.StringRes
 import com.recipesbook.DetailedRecipeModel
 import com.recipesbook.R
+import com.recipesbook.RecipeDetailsResponse
 import com.recipesbook.RecipeModel
 import com.recipesbook.RecipeRandomResponse
 import retrofit.Call
@@ -22,8 +23,8 @@ class RecipeBookApiImpl @Inject constructor() {
         manageCall(call, callbacks, R.string.fail_recipe_retrieve)
     }
 
-    fun getDetailedModel(id: String, callbacks: RequestResponseCallbacks<DetailedRecipeModel>) {
-        val call: Call<DetailedRecipeModel> = createService(callbacks.context).getDetailedModel(id)
+    fun getDetailedModel(id: String, callbacks: RequestResponseCallbacks<RecipeDetailsResponse>) {
+        val call: Call<RecipeDetailsResponse> = createService(callbacks.context).getDetailedModel(id)
         manageCall(call, callbacks, R.string.fail_recipe_retrieve)
     }
 
