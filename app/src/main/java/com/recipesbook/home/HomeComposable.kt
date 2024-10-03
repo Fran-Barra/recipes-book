@@ -1,25 +1,26 @@
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
+import com.recipesbook.RecipeModel
 import com.recipesbook.home.RandomsViewModel
 
 
@@ -36,14 +37,15 @@ fun Home() {
     } else if (showRetry) {
         TODO("show retry icon")
     } else {
-        Log.d("DEBUG HOME", "FINISHED LOADING: ${randoms.size}")
-
-        LazyVerticalGrid(columns = GridCells.Fixed(2)) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.fillMaxHeight()
+        ) {
             items(randoms) { recipe ->
                 RecipeCard(
-                    leadingIcon = Icons.Filled.Close,
-                    title = "Item ${recipe.idMeal}",
-                    trailingIcon = Icons.Filled.Refresh)
+                    recipe,
+                    Modifier.fillMaxHeight(0.5f).fillMaxWidth().padding(8.dp)
+                )
             }
         }
     }
@@ -51,30 +53,40 @@ fun Home() {
 
 @Composable
 fun RecipeCard(
-    leadingIcon: ImageVector,
-    title: String,
-    trailingIcon: ImageVector,
+    recipeModel: RecipeModel,
     modifier: Modifier = Modifier
         .fillMaxWidth()
         .wrapContentHeight()
 ) {
-    //name strMeal
     //strCategory
     //strArea
     //strYoutube
-    //strMealThumb image
-    Button(onClick = { /*TODO*/}, modifier = modifier) {
+    Button(
+        onClick = { /*TODO*/},
+        modifier = modifier,
+        shape = RoundedCornerShape(16.dp)
+    ) {
 
-        Row(
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically,
+        Column(
+            verticalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Icon(imageVector = leadingIcon, contentDescription = "")
-            Text(text = title)
-            Icon(imageVector = trailingIcon, contentDescription = "")
+            RecipeImage(imgUrl = recipeModel.imageUrl)
+            Text(text = recipeModel.name, modifier = Modifier.padding(8.dp))
         }
     }
+}
+
+@Composable
+fun RecipeImage(imgUrl: String) {
+    AsyncImage(
+        model = imgUrl,
+        contentDescription = "Recipe Image",
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(250.dp),
+        contentScale = ContentScale.Crop
+    )
 }
 
 @Preview
@@ -82,9 +94,3 @@ fun RecipeCard(
 fun PreviewHome() {
     Home()
 }
-
-data class HomeButton(
-    val leadingIcon: ImageVector,
-    val title: String,
-    val trailingIcon: ImageVector
-)
