@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity(
     tableName = "favourites",
-    indices = [Index(value = ["id_meal"], unique = true)]
+    indices = [Index(value = ["idMeal"], unique = true)]
 )
 data class Favourite(
     @PrimaryKey(autoGenerate = true)
