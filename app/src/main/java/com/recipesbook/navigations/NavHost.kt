@@ -9,6 +9,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
@@ -37,7 +38,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
         composable(route = RecipesBookScreen.Vault.name) {
             Box(modifier = Modifier.fillMaxSize()) {
                 Text(
-                    text = R.string.vault_page_not_build.toString(),
+                    text = stringResource(R.string.vault_page_not_build),
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
@@ -49,7 +50,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             val recipeId = backStackEntry.arguments?.getString("recipe-id")
             Box(modifier = Modifier.fillMaxSize()) {
                 Text(
-                    text = R.string.recipe_page_not_build.toString() + recipeId,
+                    text = stringResource(R.string.recipe_page_not_build, listOf(recipeId)),
                     modifier = Modifier.align(Alignment.Center)
                 )
             }

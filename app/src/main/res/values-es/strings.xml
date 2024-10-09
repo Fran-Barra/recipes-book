@@ -2,13 +2,13 @@
     <string name="app_name" translatable="false">RecipesBook</string>
 
     <!-- VAULT PAGE -->
-    <string name="vault_page_not_build">\"Estamos construyendo la página de la bóveda aquí\"</string>
+    <string name="vault_page_not_build">We are building the vault page here</string>
 
     <!-- FAVOURITES PAGE -->
-    <string name="favourites_no_favourites">\"No tienes recetas favoritas\"</string>
+    <string name="favourites_no_favourites">You don\'t have favourite recipes</string>
 
     <!-- RECIPE PAGE -->
-    <string name="recipe_page_not_build">\"Estamos creando la página de recetas para el ID de receta:\"</string>
+    <string name="recipe_page_not_build">We are building the recipe page for recipe ID: %s</string>
 
     <!-- ERROR -->
     <string name="fail_retrieving_data">algo salió mal al recuperar los datos</string>
