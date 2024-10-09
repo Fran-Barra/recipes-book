@@ -2,8 +2,14 @@
     <string name="app_name">RecipesBook</string>
     <string name="recipes_api">http://themealdb.com/api/json/v1/1/</string>
 
+    <!-- VAULT PAGE -->
+    <string name="vault_page_not_build">"We are building the vault page here"</string>
+
     <!-- FAVOURITES PAGE -->
     <string name="favourites_no_favourites">"You don't have favourite recipes"</string>
+
+    <!-- RECIPE PAGE -->
+    <string name="recipe_page_not_build">"We are building the recipe page for recipe ID:"</string>
 
     <!-- ERROR -->
     <string name="fail_retrieving_data">something went wrong retrieving the data</string>
