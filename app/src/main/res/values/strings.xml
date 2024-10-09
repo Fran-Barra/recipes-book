@@ -2,6 +2,9 @@
     <string name="app_name">RecipesBook</string>
     <string name="recipes_api">http://themealdb.com/api/json/v1/1/</string>
 
+    <!-- FAVOURITES PAGE -->
+    <string name="favourites_no_favourites">"You don't have favourite recipes"</string>
+
     <!-- ERROR -->
     <string name="fail_retrieving_data">something went wrong retrieving the data</string>
 
