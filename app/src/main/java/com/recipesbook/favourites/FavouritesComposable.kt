@@ -20,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.recipesbook.R
-import com.recipesbook.RecipeModel
+import com.recipesbook.data.recipes.RecipeModel
 import com.recipesbook.composable.common.CircularLoader
 import com.recipesbook.composable.common.RecipeCard
 

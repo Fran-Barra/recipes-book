@@ -1,10 +1,9 @@
 package com.recipesbook.home
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.recipesbook.RecipeModel
+import com.recipesbook.data.recipes.RecipeModel
 import com.recipesbook.apiManagement.RecipeBookApiImpl
 import com.recipesbook.apiManagement.RequestResponseCallbacks
 import dagger.hilt.android.lifecycle.HiltViewModel

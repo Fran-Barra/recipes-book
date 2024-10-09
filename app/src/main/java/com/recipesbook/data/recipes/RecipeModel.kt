@@ -1,4 +1,4 @@
-package com.recipesbook
+package com.recipesbook.data.recipes
 
 import com.google.gson.annotations.SerializedName
 

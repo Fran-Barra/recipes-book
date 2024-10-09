@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
-import com.recipesbook.DetailedRecipeModel
+import com.recipesbook.data.recipes.DetailedRecipeModel
 import com.recipesbook.apiManagement.RecipeBookApiImpl
 import com.recipesbook.apiManagement.RequestResponseCallbacks
 import com.recipesbook.data.RecipesBookDatabase

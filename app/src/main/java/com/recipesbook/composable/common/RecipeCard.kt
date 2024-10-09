@@ -15,7 +15,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.recipesbook.RecipeModel
+import com.recipesbook.data.recipes.RecipeModel
 
 
 @Composable
@@ -59,9 +59,11 @@ fun RecipeImage(imgUrl: String) {
 @Preview
 @Composable
 fun PreviewCard() {
-    RecipeCard(RecipeModel(
+    RecipeCard(
+        RecipeModel(
         "4234",
         "test card",
         "https://www.themealdb.com/images/media/meals/1bsv1q1560459826.jpg"
-    ))
+    )
+    )
 }

@@ -4,8 +4,6 @@ import android.content.Context
 import android.widget.Toast
 import androidx.annotation.StringRes
 import com.recipesbook.R
-import com.recipesbook.RecipeDetailsResponse
-import com.recipesbook.RecipeRandomResponse
 import retrofit.Call
 import retrofit.Callback
 import retrofit.GsonConverterFactory
