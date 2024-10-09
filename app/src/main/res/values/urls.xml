@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="recipes_api">http://themealdb.com/api/json/v1/1/</string>
+    <string name="recipes_api" translatable="false">http://themealdb.com/api/json/v1/1/</string>
 </resources>

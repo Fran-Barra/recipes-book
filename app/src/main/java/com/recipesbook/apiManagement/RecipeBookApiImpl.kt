@@ -1,13 +1,10 @@
 package com.recipesbook.apiManagement
 
 import android.content.Context
-import android.util.Log
 import android.widget.Toast
 import androidx.annotation.StringRes
-import com.recipesbook.DetailedRecipeModel
 import com.recipesbook.R
 import com.recipesbook.RecipeDetailsResponse
-import com.recipesbook.RecipeModel
 import com.recipesbook.RecipeRandomResponse
 import retrofit.Call
 import retrofit.Callback

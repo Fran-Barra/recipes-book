@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name" translatable="false">RecipesBook</string>
+
+    <!-- VAULT PAGE -->
+    <string name="vault_page_not_build">\"Estamos construyendo la página de la bóveda aquí\"</string>
+
+    <!-- FAVOURITES PAGE -->
+    <string name="favourites_no_favourites">\"No tienes recetas favoritas\"</string>
+
+    <!-- RECIPE PAGE -->
+    <string name="recipe_page_not_build">\"Estamos creando la página de recetas para el ID de receta:\"</string>
+
+    <!-- ERROR -->
+    <string name="fail_retrieving_data">algo salió mal al recuperar los datos</string>
+
+    <!-- TOAST -->
+    <string name="something_went_wrong">algo salió mal</string>
+    <string name="fail_recipe_retrieve">No se pudo recuperar la receta</string>
+</resources>
