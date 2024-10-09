@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RecipesBook</string>
+    <string name="app_name" translatable="false">RecipesBook</string>
     <string name="recipes_api">http://themealdb.com/api/json/v1/1/</string>
 
     <!-- VAULT PAGE -->

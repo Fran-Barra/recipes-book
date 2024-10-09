@@ -15,6 +15,9 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.colorResource
+import androidx.core.graphics.toColor
+import com.recipesbook.R
 
 @Composable
 fun BottomBar(onNavigate: (String)->Unit) {
@@ -50,7 +53,8 @@ fun TabView(
                 icon = { Icon(
                     imageVector = item.icon,
                     contentDescription = item.screen.name,
-                    tint = if (i == selectedTabIndex) Color.Black else Color.Gray
+                    tint = if (i == selectedTabIndex) colorResource(id = R.color.black)
+                            else colorResource(id = R.color.gray)
                 )}
             )
         }
