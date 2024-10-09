@@ -15,7 +15,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.recipesbook.favourites.Favourite
+import com.recipesbook.favourites.FavouriteComposable
 
 @Composable
 fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostController) {
@@ -31,7 +31,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             Home()
         }
         composable(route = RecipesBookScreen.Favourites.name) {
-            Favourite()
+            FavouriteComposable()
         }
         composable(route = RecipesBookScreen.Vault.name) {
             Box(modifier = Modifier.fillMaxSize()) {
