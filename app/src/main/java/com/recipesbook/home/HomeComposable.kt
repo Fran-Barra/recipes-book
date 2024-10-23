@@ -9,12 +9,11 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.recipesbook.composable.common.CircularLoader
 import com.recipesbook.composable.common.RecipeCard
 import com.recipesbook.home.RandomsViewModel
-
+import com.recipesbook.ui.theme.Dimensions
 
 
 @Composable
@@ -36,7 +35,7 @@ fun Home() {
             items(randoms) { recipe ->
                 RecipeCard(
                     recipe,
-                    Modifier.fillMaxHeight(0.5f).fillMaxWidth().padding(8.dp)
+                    Modifier.fillMaxHeight(0.5f).fillMaxWidth().padding(Dimensions.padding)
                 )
             }
         }

@@ -13,9 +13,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.recipesbook.data.recipes.RecipeModel
+import com.recipesbook.ui.theme.Dimensions
 
 
 @Composable
@@ -31,7 +31,7 @@ fun RecipeCard(
     Button(
         onClick = { /*TODO*/},
         modifier = modifier,
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(Dimensions.roundedCorner)
     ) {
 
         Column(
@@ -39,7 +39,7 @@ fun RecipeCard(
             modifier = Modifier.fillMaxWidth()
         ) {
             RecipeImage(imgUrl = recipeModel.imageUrl)
-            Text(text = recipeModel.name, modifier = Modifier.padding(8.dp))
+            Text(text = recipeModel.name, modifier = Modifier.padding(Dimensions.padding))
         }
     }
 }
@@ -51,7 +51,7 @@ fun RecipeImage(imgUrl: String) {
         contentDescription = "Recipe Image",
         modifier = Modifier
             .fillMaxWidth()
-            .height(250.dp),
+            .height(Dimensions.Card.large),
         contentScale = ContentScale.Crop
     )
 }

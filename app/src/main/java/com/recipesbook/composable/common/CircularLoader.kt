@@ -7,7 +7,7 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import com.recipesbook.ui.theme.Dimensions
 import com.recipesbook.ui.theme.PurpleGrey40
 import com.recipesbook.ui.theme.PurpleGrey80
 
@@ -16,7 +16,7 @@ import com.recipesbook.ui.theme.PurpleGrey80
 fun CircularLoader() {
     Box(modifier = Modifier.fillMaxSize()) {
         CircularProgressIndicator(
-            modifier = Modifier.size(64.dp).align(Alignment.Center),
+            modifier = Modifier.size(Dimensions.Icon.medium).align(Alignment.Center),
             color = PurpleGrey40,
             trackColor = PurpleGrey80,
         )
