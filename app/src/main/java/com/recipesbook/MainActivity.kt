@@ -8,6 +8,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.compose.rememberNavController
 import com.recipesbook.navigations.BottomBar
 import com.recipesbook.navigations.NavHostComposable
@@ -15,7 +16,7 @@ import com.recipesbook.ui.theme.RecipesBookTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint()
-class MainActivity : ComponentActivity() {
+class MainActivity : FragmentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
