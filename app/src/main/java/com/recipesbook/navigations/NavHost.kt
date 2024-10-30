@@ -18,6 +18,7 @@ import androidx.navigation.navArgument
 import com.recipesbook.R
 import com.recipesbook.favourites.FavouriteComposable
 import com.recipesbook.ui.theme.Dimensions
+import com.recipesbook.vault.VaultComposable
 
 @Composable
 fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostController) {
@@ -36,12 +37,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             FavouriteComposable()
         }
         composable(route = RecipesBookScreen.Vault.name) {
-            Box(modifier = Modifier.fillMaxSize()) {
-                Text(
-                    text = stringResource(R.string.vault_page_not_build),
-                    modifier = Modifier.align(Alignment.Center)
-                )
-            }
+            VaultComposable()
         }
         composable(
             route = "${RecipesBookScreen.Recipe.name}/{recipe-id}",
