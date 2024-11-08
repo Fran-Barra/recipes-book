@@ -16,4 +16,16 @@
     <!-- TOAST -->
     <string name="something_went_wrong">algo salió mal</string>
     <string name="fail_recipe_retrieve">No se pudo recuperar la receta</string>
+
+
+    <!-- BIOMETRIC AUTHENTICATION -->
+    <string name="requires_authentication">Necesitas autentificarte</string>
+    <string name="biometric_error_no_hardware">Este teléfono no está preparado para funciones biométricas.</string>
+    <string name="biometric_error_hw_unavailable">La autenticación biométrica no está disponible</string>
+    <string name="biometric_error_security_update_required">No puede utilizar la autenticación biométrica hasta que haya actualizado sus datos de seguridad</string>
+    <string name="biometric_error_unsupported">No puedes usar la autenticación biométrica con esta versión de Android</string>
+    <string name="biometric_status_unknown">No puedes usar autenticación biométrica</string>
+    <string name="biometric_error_none_enrolled">No puedes usar autenticación biométrica</string>
+    <string name="biometric_available">La autenticación biométrica está disponible</string>
+
 </resources>

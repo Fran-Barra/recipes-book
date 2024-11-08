@@ -16,4 +16,16 @@
     <!-- TOAST -->
     <string name="something_went_wrong">Something went wrong</string>
     <string name="fail_recipe_retrieve">Could not retrieve recipe</string>
+
+
+    <!-- BIOMETRIC AUTHENTICATION -->
+    <string name="requires_authentication">You need to authenticate</string>
+    <string name="biometric_error_no_hardware">This phone is not prepared for biometric features</string>
+    <string name="biometric_error_hw_unavailable">Biometric authentication is unavailable</string>
+    <string name="biometric_error_security_update_required">You can\'t use biometric auth until you have updated your security details</string>
+    <string name="biometric_error_unsupported">You can\'t use biometric auth with this Android version</string>
+    <string name="biometric_status_unknown">You can\'t use biometric auth</string>
+    <string name="biometric_error_none_enrolled">You can\'t use biometric auth</string>
+    <string name="biometric_available">Biometric authentication is available</string>
+
 </resources>
