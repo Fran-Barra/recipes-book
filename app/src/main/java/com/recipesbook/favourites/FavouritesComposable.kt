@@ -19,15 +19,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.recipesbook.R
 import com.recipesbook.data.recipes.RecipeModel
 import com.recipesbook.composable.common.CircularLoader
 import com.recipesbook.composable.common.RecipeCard
 import com.recipesbook.data.recipes.DetailedRecipeModel
+import com.recipesbook.navigations.RecipesBookScreen
 import com.recipesbook.ui.theme.Dimensions
 
 @Composable
-fun FavouriteComposable() {
+fun FavouriteComposable(navigateToRecipePage : (idMeal : String) -> Unit) {
     val viewModel = hiltViewModel<FavouriteViewModel>()
 
     val favourites by viewModel.favourites.collectAsState();
@@ -38,7 +40,7 @@ fun FavouriteComposable() {
     else if (showRetry) DisplayRetry(onClick = {viewModel.loadingFavourite})
     else {
         if (favourites.isEmpty()) DisplayEmptyFavourite()
-        else FavouritesList(favourites = favourites, viewModel = viewModel)
+        else FavouritesList(favourites = favourites, viewModel = viewModel, navigateToRecipePage)
 
     }
 }
@@ -69,22 +71,27 @@ fun DisplayEmptyFavourite() {
 }
 
 @Composable
-fun FavouritesList(favourites :  List<DetailedRecipeModel>, viewModel: FavouriteViewModel) {
+fun FavouritesList(
+    favourites :  List<DetailedRecipeModel>,
+    viewModel: FavouriteViewModel,
+    handleClickRecipeCard : (idMeal : String) -> Unit
+) {
+    fun handleClickLikeRecipe(idMeal : String) : (Boolean) -> Unit {
+        return { liked ->
+            if (liked) viewModel.addFavourite(idMeal)
+            else viewModel.removeFavourite(idMeal)
+        }
+    }
+
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier.fillMaxHeight()
     ) {
-        fun handleClickLikeRecipe(idMeal : String) : (Boolean) -> Unit {
-            return { liked ->
-                if (liked) viewModel.addFavourite(idMeal)
-                else viewModel.removeFavourite(idMeal)
-            }
-        }
-
         items(favourites, key = { it.idMeal }) { recipe ->
             RecipeCard(
                 RecipeModel(recipe.idMeal, recipe.name, recipe.imageUrl),
                 onClickLikeButton = handleClickLikeRecipe(recipe.idMeal),
+                onClickCard = {handleClickRecipeCard(recipe.idMeal)},
                 liked = true,
                 Modifier
                     .fillMaxHeight(0.5f)
@@ -98,5 +105,5 @@ fun FavouritesList(favourites :  List<DetailedRecipeModel>, viewModel: Favourite
 @Preview
 @Composable
 fun FavouritePreview() {
-    FavouriteComposable()
+    FavouriteComposable({ println("navifate to recipe") })
 }

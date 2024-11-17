@@ -18,7 +18,7 @@ import com.recipesbook.ui.theme.Dimensions
 
 
 @Composable
-fun Home() {
+fun Home(navigateToRecipePage : (idMeal : String) -> Unit) {
     val randomsViewModel = hiltViewModel<RandomsViewModel>()
     val favouriteViewModel = hiltViewModel<FavouriteViewModel>()
 
@@ -47,8 +47,8 @@ fun Home() {
                 RecipeCard(
                     recipe,
                     onClickLikeButton = handleClickLikeRecipe(recipe.idMeal),
+                    onClickCard = {navigateToRecipePage(recipe.idMeal)},
                     modifier = Modifier.fillMaxHeight(0.5f).fillMaxWidth().padding(Dimensions.padding)
-
                 )
             }
         }
@@ -58,5 +58,5 @@ fun Home() {
 @Preview
 @Composable
 fun PreviewHome() {
-    Home()
+    Home { idMeal -> println("Navigate to recipe $idMeal") }
 }

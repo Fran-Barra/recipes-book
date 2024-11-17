@@ -34,6 +34,7 @@ import com.recipesbook.ui.theme.Dimensions
 fun RecipeCard(
     recipeModel: RecipeModel,
     onClickLikeButton: (liked : Boolean)->Unit,
+    onClickCard: () -> Unit,
     liked : Boolean = false,
     modifier: Modifier = Modifier
         .fillMaxWidth()
@@ -48,10 +49,8 @@ fun RecipeCard(
     }
 
     //strCategory
-    //strArea
-    //strYoutube
     Button(
-        onClick = { /*TODO*/ },
+        onClick = onClickCard,
         modifier = modifier,
         shape = RoundedCornerShape(Dimensions.roundedCorner)
     ) {
@@ -67,10 +66,9 @@ fun RecipeCard(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
-                // Recipe name
                 Text(
                     text = recipeModel.name,
-                    modifier = Modifier.weight(1f) // Push the text to the left
+                    modifier = Modifier.weight(1f)
                 )
 
                 IconButton(onClick = handleLikeRecipe) {
@@ -107,6 +105,7 @@ fun PreviewCard() {
         "test card",
         "https://www.themealdb.com/images/media/meals/1bsv1q1560459826.jpg"
     ),
-        onClickLikeButton = {}
+        onClickLikeButton = {},
+        onClickCard = { println("clicked card") }
     )
 }
