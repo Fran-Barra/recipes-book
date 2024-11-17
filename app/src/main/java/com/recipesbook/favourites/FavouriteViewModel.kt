@@ -1,13 +1,13 @@
 package com.recipesbook.favourites
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asFlow
 import androidx.lifecycle.viewModelScope
 import com.recipesbook.data.recipes.DetailedRecipeModel
 import com.recipesbook.apiManagement.RecipeBookApiImpl
 import com.recipesbook.apiManagement.RequestResponseCallbacks
+import com.recipesbook.data.Favourite
 import com.recipesbook.data.RecipesBookDatabase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -46,13 +46,9 @@ class FavouriteViewModel @Inject constructor(
 
             favouriteRecipesIds.collect { favouritesList ->
                 if (favouritesList.isNotEmpty()) {
-                    Log.d("DEBUG", "FAVOURITES FOUND")
                     val ids = favouritesList.map { it.idMeal }
                     fetchRecipesFromApi(ids)
                 } else {
-                    //TODO: used for testing, remove when add integrated
-                    recipesBookDatabase.favouriteDao().
-                        insert(com.recipesbook.data.Favourite(idMeal = "52772"))
                     _loadingFavourites.value = false
                 }
             }
@@ -67,7 +63,11 @@ class FavouriteViewModel @Inject constructor(
                 context,
                 onSuccess = {
                     viewModelScope.launch {
-                        _favourites.emit((_favourites.value+it.meals.first()).sortedBy { it.idMeal })
+                        val newRecipe = it.meals.first()
+                        val newList = (_favourites.value+newRecipe)
+                            .distinctBy { it.idMeal }
+                            .sortedBy { it.idMeal }
+                        _favourites.emit(newList)
                     } },
                 onFail = { _showRetry.value = true },
                 loadingFinished = {
@@ -78,11 +78,18 @@ class FavouriteViewModel @Inject constructor(
         }
     }
 
+    fun addFavourite(idMeal: String) {
+        viewModelScope.launch {
+            recipesBookDatabase.favouriteDao().insert(Favourite(idMeal = idMeal))
+        }
+    }
+
     fun removeFavourite(idMeal : String) {
         viewModelScope.launch {
-            recipesBookDatabase.favouriteDao().delete(com.recipesbook.data.Favourite(idMeal = idMeal))
+            recipesBookDatabase.favouriteDao().deleteById(idMeal)
             val model = _favourites.value.findLast { r -> r.idMeal == idMeal }
-            if (model != null) _favourites.value-=model
+            if (model != null) _favourites.value = _favourites.value.filter { it.idMeal != idMeal }
+
         }
     }
 }

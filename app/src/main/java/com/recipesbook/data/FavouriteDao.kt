@@ -10,9 +10,11 @@ import androidx.room.Query
 interface FavouriteDao {
     @Insert
     suspend fun insert(favourite: Favourite)
-    @Delete
-    suspend fun delete(favourite: Favourite)
+    @Query("DELETE FROM favourites WHERE idMeal = :idMeal")
+    suspend fun deleteById(idMeal: String)
     @Query("SELECT * FROM favourites")
     fun getAllFavourites(): LiveData<List<Favourite>>
 
+    @Query("SELECT 1 FROM favourites WHERE idMeal = :idMeal LIMIT 1")
+    fun isLiked(idMeal : String) : Boolean
 }

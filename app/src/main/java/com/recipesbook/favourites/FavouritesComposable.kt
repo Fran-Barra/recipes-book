@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -22,6 +23,7 @@ import com.recipesbook.R
 import com.recipesbook.data.recipes.RecipeModel
 import com.recipesbook.composable.common.CircularLoader
 import com.recipesbook.composable.common.RecipeCard
+import com.recipesbook.data.recipes.DetailedRecipeModel
 import com.recipesbook.ui.theme.Dimensions
 
 @Composable
@@ -33,32 +35,63 @@ fun FavouriteComposable() {
     val showRetry by viewModel.showRetry.collectAsState();
 
     if (loadingFavourites) CircularLoader()
-    else if (showRetry) {
-        TODO("show retry icon")
-    } else {
-        //TODO: improve empty list management
-        if (favourites.size == 0)
-            Box(modifier = Modifier.fillMaxSize()) {
-                Text(
-                    text = stringResource(R.string.fail_retrieving_data),
-                    modifier = Modifier.align(Alignment.Center)
-                )
+    else if (showRetry) DisplayRetry(onClick = {viewModel.loadingFavourite})
+    else {
+        if (favourites.isEmpty()) DisplayEmptyFavourite()
+        else FavouritesList(favourites = favourites, viewModel = viewModel)
+
+    }
+}
+
+@Composable
+fun DisplayRetry(onClick : () -> Unit) {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Button(
+            onClick = onClick,
+            modifier = Modifier.align(Alignment.Center)
+        ) {
+            Text(
+                text = stringResource(R.string.fail_retrieving_data),
+            )
+        }
+    }
+}
+
+@Composable
+fun DisplayEmptyFavourite() {
+    //TODO: improve empty list management
+    Box(modifier = Modifier.fillMaxSize()) {
+        Text(
+            text = stringResource(R.string.fail_retrieving_data),
+            modifier = Modifier.align(Alignment.Center)
+        )
+    }
+}
+
+@Composable
+fun FavouritesList(favourites :  List<DetailedRecipeModel>, viewModel: FavouriteViewModel) {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        modifier = Modifier.fillMaxHeight()
+    ) {
+        fun handleClickLikeRecipe(idMeal : String) : (Boolean) -> Unit {
+            return { liked ->
+                if (liked) viewModel.addFavourite(idMeal)
+                else viewModel.removeFavourite(idMeal)
             }
-        else
-            LazyVerticalGrid(
-                columns = GridCells.Fixed(2),
-                modifier = Modifier.fillMaxHeight()
-            ) {
-                items(favourites) { recipe ->
-                    RecipeCard(
-                        RecipeModel(recipe.idMeal, recipe.name, recipe.imageUrl),
-                        Modifier
-                            .fillMaxHeight(0.5f)
-                            .fillMaxWidth()
-                            .padding(Dimensions.padding)
-                    )
-                }
-            }
+        }
+
+        items(favourites, key = { it.idMeal }) { recipe ->
+            RecipeCard(
+                RecipeModel(recipe.idMeal, recipe.name, recipe.imageUrl),
+                onClickLikeButton = handleClickLikeRecipe(recipe.idMeal),
+                liked = true,
+                Modifier
+                    .fillMaxHeight(0.5f)
+                    .fillMaxWidth()
+                    .padding(Dimensions.padding)
+            )
+        }
     }
 }
 

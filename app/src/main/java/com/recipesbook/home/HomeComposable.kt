@@ -12,6 +12,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.recipesbook.composable.common.CircularLoader
 import com.recipesbook.composable.common.RecipeCard
+import com.recipesbook.favourites.FavouriteViewModel
 import com.recipesbook.home.RandomsViewModel
 import com.recipesbook.ui.theme.Dimensions
 
@@ -19,10 +20,19 @@ import com.recipesbook.ui.theme.Dimensions
 @Composable
 fun Home() {
     val randomsViewModel = hiltViewModel<RandomsViewModel>()
+    val favouriteViewModel = hiltViewModel<FavouriteViewModel>()
+
 
     val randoms by randomsViewModel.randoms.collectAsState();
     val loadingRandoms by randomsViewModel.loadingRandoms.collectAsState();
     val showRetry by randomsViewModel.showRetry.collectAsState();
+
+    fun handleClickLikeRecipe(idMeal : String) : (Boolean) -> Unit {
+        return { liked ->
+            if (liked) favouriteViewModel.addFavourite(idMeal)
+            else favouriteViewModel.removeFavourite(idMeal)
+        }
+    }
 
     if (loadingRandoms) CircularLoader()
     else if (showRetry) {
@@ -33,9 +43,12 @@ fun Home() {
             modifier = Modifier.fillMaxHeight()
         ) {
             items(randoms) { recipe ->
+                //TODO(set liked or not by checking if it is already in the db)
                 RecipeCard(
                     recipe,
-                    Modifier.fillMaxHeight(0.5f).fillMaxWidth().padding(Dimensions.padding)
+                    onClickLikeButton = handleClickLikeRecipe(recipe.idMeal),
+                    modifier = Modifier.fillMaxHeight(0.5f).fillMaxWidth().padding(Dimensions.padding)
+
                 )
             }
         }
