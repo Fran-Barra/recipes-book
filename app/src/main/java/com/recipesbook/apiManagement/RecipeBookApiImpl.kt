@@ -3,6 +3,7 @@ package com.recipesbook.apiManagement
 import android.content.Context
 import android.widget.Toast
 import androidx.annotation.StringRes
+import com.google.gson.GsonBuilder
 import com.recipesbook.R
 import retrofit.Call
 import retrofit.Callback
@@ -24,9 +25,11 @@ class RecipeBookApiImpl @Inject constructor() {
     }
 
     private fun createService(context : Context) : RecipesBookApi {
+        val gson = GsonBuilder().registerTypeAdapter(RecipeDetailsResponse::class.java, RecipeDetailsDeserializer()).create()
+
         val retrofit: Retrofit = Retrofit.Builder()
             .baseUrl(context.getString(R.string.recipes_api))
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
 
         return retrofit.create(RecipesBookApi::class.java)
