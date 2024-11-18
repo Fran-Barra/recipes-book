@@ -8,10 +8,13 @@
     <string name="favourites_no_favourites">You don\'t have favourite recipes</string>
 
     <!-- RECIPE PAGE -->
-    <string name="recipe_page_not_build">We are building the recipe page for recipe ID: %s</string>
+    <string name="recipe_page_instructions">Instructions</string>
+    <string name="recipe_page_tags">Tags</string>
+    <string name="recipe_page_ingredients">Ingredients</string>
 
     <!-- ERROR -->
     <string name="fail_retrieving_data">something went wrong retrieving the data</string>
+    <string name="retry">retry</string>
 
     <!-- TOAST -->
     <string name="something_went_wrong">Something went wrong</string>
