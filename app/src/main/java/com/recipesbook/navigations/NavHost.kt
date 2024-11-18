@@ -44,9 +44,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             arguments = listOf(navArgument("recipe-id") { type = NavType.StringType})
         ) { backStackEntry ->
             val recipeId = backStackEntry.arguments?.getString("recipe-id")
-            if (recipeId != null) {
-                RecipePage(idMeal = recipeId)
-            }
+            if (recipeId != null) RecipePage()
         }
     }
 }
