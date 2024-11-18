@@ -12,6 +12,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.recipesbook.favourites.FavouriteComposable
+import com.recipesbook.home.RecipeFromIngredientViewModel
+import com.recipesbook.home.RecipesWithIngredientPage
 import com.recipesbook.recipePage.RecipePage
 import com.recipesbook.ui.theme.Dimensions
 import com.recipesbook.vault.VaultComposable
@@ -20,6 +22,10 @@ import com.recipesbook.vault.VaultComposable
 fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostController) {
     val navigateToRecipePage = {mealId : String ->
         navBarController.navigate("${RecipesBookScreen.Recipe}/${mealId}")
+    }
+
+    val navigateToRecipes = {ingridient : String ->
+        navBarController.navigate("${RecipesBookScreen.Home.name}/${ingridient}/${RecipesBookScreen.HomeRecipes}")
     }
 
     NavHost(
@@ -31,7 +37,10 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             .padding(horizontal = Dimensions.Padding.medium)
     ) {
         composable(route = RecipesBookScreen.Home.name) {
-            Home(navigateToRecipePage)
+            Home(navigateToRecipes)
+        }
+        composable(route = "${RecipesBookScreen.Home.name}/{ingredient-name}/${RecipesBookScreen.HomeRecipes}") {
+            RecipesWithIngredientPage(navigateToRecipePage)
         }
         composable(route = RecipesBookScreen.Favourites.name) {
             FavouriteComposable(navigateToRecipePage)
