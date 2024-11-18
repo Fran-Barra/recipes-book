@@ -13,4 +13,7 @@ interface RecipesBookApi {
 
     @GET("list.php?i=list")
     fun getIngredients() : Call<IngredientsResponse>
+
+    @GET("filter.php")
+    fun getRecipeWithGivenIngredient(@Query("i") ingredientName : String) : Call<RecipeDetailsResponse>
 }
