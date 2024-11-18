@@ -31,9 +31,9 @@ class RecipeBookApiImpl @Inject constructor() {
 
     fun getRecipeWithGivenIngredient(
         ingredientName : String,
-        callbacks: RequestResponseCallbacks<RecipeDetailsResponse>
+        callbacks: RequestResponseCallbacks<RecipeRandomResponse>
     ) {
-        val call : Call<RecipeDetailsResponse> = createService(callbacks.context).getRecipeWithGivenIngredient(ingredientName)
+        val call : Call<RecipeRandomResponse> = createService(callbacks.context).getRecipeWithGivenIngredient(ingredientName)
         manageCall(call, callbacks, R.string.fail_recipe_retrieve)
     }
 
