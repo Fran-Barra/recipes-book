@@ -1,8 +1,10 @@
 package com.recipesbook.apiManagement
 
+import android.util.Log
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
+import com.google.gson.JsonObject
 import com.recipesbook.data.recipes.DetailedRecipeModel
 import com.recipesbook.data.recipes.Ingredient
 import java.lang.reflect.Type
@@ -15,18 +17,12 @@ class RecipeDetailsDeserializer : JsonDeserializer<RecipeDetailsResponse> {
         typeOfT: Type,
         context: JsonDeserializationContext
     ): RecipeDetailsResponse {
-        val jsonArray = json.asJsonObject["meals"].asJsonArray // Ensure you handle the "meals" array
+        val jsonArray = json.asJsonObject["meals"].asJsonArray
         val detailedRecipes = jsonArray.map { mealJsonElement ->
             val jsonObject = mealJsonElement.asJsonObject
 
-            val tags: List<String> = jsonObject["strTags"]?.asString.orEmpty().split(',').map { it.trim() }
-
-            val ingredients: List<Ingredient> = (1..20).mapNotNull { index ->
-                val name = jsonObject["strIngredient$index"]?.asString?.takeIf { it.isNotBlank() }
-                val measure = jsonObject["strMeasure$index"]?.asString?.takeIf { it.isNotBlank() }
-                if (name == null || measure == null) null
-                else Ingredient(name, measure)
-            }
+            val tags: List<String> = getTags(jsonObject)
+            val ingredients: List<Ingredient> = getIngredients(jsonObject)
 
             DetailedRecipeModel(
                 idMeal = jsonObject["idMeal"]?.asString.orEmpty(),
@@ -40,4 +36,21 @@ class RecipeDetailsDeserializer : JsonDeserializer<RecipeDetailsResponse> {
 
         return RecipeDetailsResponse(meals = detailedRecipes)
     }
+
+    private fun getTags(jsonObject : JsonObject) : List<String> {
+        return  getVarAsString(jsonObject, "strTags")?.split(',')?.map { it.trim() }.orEmpty()
+    }
+
+    private fun getIngredients(jsonObject: JsonObject) : List<Ingredient> {
+        return  (1..20).mapNotNull { index ->
+            val name = getVarAsString(jsonObject, "strIngredient$index")?.takeIf { it.isNotBlank() }
+            val measure = getVarAsString(jsonObject, "strMeasure$index")?.takeIf { it.isNotBlank() }
+            if (name == null || measure == null) null
+            else Ingredient(name, measure)
+        }
+    }
+
+    private fun getVarAsString(json: JsonObject, varName : String) : String? =
+        json[varName]?.takeIf { it.isJsonPrimitive }?.asString
+
 }
