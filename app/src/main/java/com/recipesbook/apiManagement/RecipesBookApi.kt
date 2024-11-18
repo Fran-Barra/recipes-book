@@ -10,4 +10,7 @@ interface RecipesBookApi {
 
     @GET("lookup.php")
     fun getDetailedModel(@Query("i") identifier : String): Call<RecipeDetailsResponse>
+
+    @GET("list.php?i=list")
+    fun getIngredients() : Call<IngredientsResponse>
 }

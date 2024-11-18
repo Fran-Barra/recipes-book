@@ -19,6 +19,7 @@
     <!-- TOAST -->
     <string name="something_went_wrong">Something went wrong</string>
     <string name="fail_recipe_retrieve">Could not retrieve recipe</string>
+    <string name="fail_ingredients_retrive">Could not retrieve ingredients</string>
 
 
     <!-- BIOMETRIC AUTHENTICATION -->
