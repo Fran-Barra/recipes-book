@@ -37,7 +37,7 @@ fun FavouriteComposable(navigateToRecipePage : (idMeal : String) -> Unit) {
     val showRetry by viewModel.showRetry.collectAsState();
 
     if (loadingFavourites) CircularLoader()
-    else if (showRetry) DisplayRetry(onClick = {viewModel.loadingFavourite})
+    else if (showRetry) Retry(onClickRetry = {viewModel.retryLoadFavourites()}, stringResource(R.string.fail_retrieving_data))
     else {
         if (favourites.isEmpty()) DisplayEmptyFavourite()
         else FavouritesList(favourites = favourites, viewModel = viewModel, navigateToRecipePage)
@@ -46,25 +46,10 @@ fun FavouriteComposable(navigateToRecipePage : (idMeal : String) -> Unit) {
 }
 
 @Composable
-fun DisplayRetry(onClick : () -> Unit) {
-    Box(modifier = Modifier.fillMaxSize()) {
-        Button(
-            onClick = onClick,
-            modifier = Modifier.align(Alignment.Center)
-        ) {
-            Text(
-                text = stringResource(R.string.fail_retrieving_data),
-            )
-        }
-    }
-}
-
-@Composable
 fun DisplayEmptyFavourite() {
-    //TODO: improve empty list management
     Box(modifier = Modifier.fillMaxSize()) {
         Text(
-            text = stringResource(R.string.fail_retrieving_data),
+            text = stringResource(R.string.favourites_no_favourites),
             modifier = Modifier.align(Alignment.Center)
         )
     }
