@@ -28,7 +28,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
         modifier = Modifier
             .fillMaxSize()
             .padding(innerPadding)
-            .padding(horizontal = Dimensions.padding)
+            .padding(horizontal = Dimensions.Padding.medium)
     ) {
         composable(route = RecipesBookScreen.Home.name) {
             Home(navigateToRecipePage)

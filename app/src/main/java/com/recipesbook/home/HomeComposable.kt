@@ -48,7 +48,7 @@ fun Home(navigateToRecipePage : (idMeal : String) -> Unit) {
                     recipe,
                     onClickLikeButton = handleClickLikeRecipe(recipe.idMeal),
                     onClickCard = {navigateToRecipePage(recipe.idMeal)},
-                    modifier = Modifier.fillMaxHeight(0.5f).fillMaxWidth().padding(Dimensions.padding)
+                    modifier = Modifier.fillMaxHeight(0.5f).fillMaxWidth().padding(Dimensions.Padding.medium)
                 )
             }
         }

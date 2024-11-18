@@ -96,7 +96,7 @@ fun FavouritesList(
                 Modifier
                     .fillMaxHeight(0.5f)
                     .fillMaxWidth()
-                    .padding(Dimensions.padding)
+                    .padding(Dimensions.Padding.medium)
             )
         }
     }

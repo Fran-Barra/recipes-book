@@ -52,7 +52,7 @@ fun RecipeCard(
     Button(
         onClick = onClickCard,
         modifier = modifier,
-        shape = RoundedCornerShape(Dimensions.roundedCorner)
+        shape = RoundedCornerShape(Dimensions.RoundedCorner.large)
     ) {
         Column(
             verticalArrangement = Arrangement.Center,
@@ -62,7 +62,7 @@ fun RecipeCard(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(Dimensions.padding),
+                    .padding(Dimensions.Padding.medium),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
