@@ -11,7 +11,6 @@ import com.recipesbook.ui.theme.Dimensions
 import com.recipesbook.ui.theme.PurpleGrey40
 import com.recipesbook.ui.theme.PurpleGrey80
 
-//TODO: move colors and size
 @Composable
 fun CircularLoader() {
     Box(modifier = Modifier.fillMaxSize()) {
