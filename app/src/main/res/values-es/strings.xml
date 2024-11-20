@@ -32,4 +32,6 @@
     <string name="biometric_error_none_enrolled">No puedes usar autenticación biométrica</string>
     <string name="biometric_available">La autenticación biométrica está disponible</string>
 
+    <string name="biometric_error_in_auth">Hubo un error en la autenticación.</string>
+    <string name="biometric_failed_auth">La autenticación falló, inténtalo de nuevo.</string>
 </resources>
