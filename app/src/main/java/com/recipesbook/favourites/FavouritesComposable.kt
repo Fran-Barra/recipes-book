@@ -24,6 +24,7 @@ import com.recipesbook.R
 import com.recipesbook.data.recipes.RecipeModel
 import com.recipesbook.composable.common.CircularLoader
 import com.recipesbook.composable.common.RecipeCard
+import com.recipesbook.composable.common.Retry
 import com.recipesbook.data.recipes.DetailedRecipeModel
 import com.recipesbook.navigations.RecipesBookScreen
 import com.recipesbook.ui.theme.Dimensions
