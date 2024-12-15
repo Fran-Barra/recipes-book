@@ -15,11 +15,13 @@
     <!-- ERROR -->
     <string name="fail_retrieving_data">something went wrong retrieving the data</string>
     <string name="retry">retry</string>
+    <string name="fail_capture_picture">failed to capture a picture</string>
 
     <!-- TOAST -->
     <string name="something_went_wrong">Something went wrong</string>
     <string name="fail_recipe_retrieve">Could not retrieve recipe</string>
     <string name="fail_ingredients_retrive">Could not retrieve ingredients</string>
+    <string name="permisions_were_denied">The permissions were denied, try again to allow them</string>
 
 
     <!-- BIOMETRIC AUTHENTICATION -->
