@@ -8,9 +8,15 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -27,10 +33,13 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import coil.compose.rememberAsyncImagePainter
 import com.recipesbook.R
 import com.recipesbook.activities.CameraViewModel
+import com.recipesbook.composable.common.RecipeCard
+import com.recipesbook.data.recipes.RecipeModel
 import com.recipesbook.security.Available
 import com.recipesbook.security.BiometricAuthViewModel
 import com.recipesbook.security.NotAvailable
 import com.recipesbook.security.canAuthenticate
+import com.recipesbook.ui.theme.Dimensions
 
 @Composable()
 fun VaultComposable() {
@@ -54,6 +63,35 @@ fun VaultComposable() {
 
 @Composable
 fun VaultUnlockedComposable() {
+    val myRecipesView = hiltViewModel<MyRecipeViewModel>()
+
+    val myRecipes by myRecipesView.myRecipes.collectAsState(listOf())
+
+    val handleClickRecipeCard = { id : String ->
+
+    }
+
+    //TODO: move this to a common composable
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        modifier = Modifier.fillMaxHeight()
+    ) {
+        items(myRecipes, key = { it.idMeal }) { recipe ->
+            RecipeCard(
+                RecipeModel(recipe.idMeal, recipe.name, recipe.imageUrl),
+                onClickCard = {handleClickRecipeCard(recipe.idMeal)},
+                likable = false,
+                modifier = Modifier
+                    .fillMaxHeight(0.5f)
+                    .fillMaxWidth()
+                    .padding(Dimensions.Padding.medium)
+            )
+        }
+    }
+}
+
+@Composable
+fun CreatingNewRecipe() {
     val cameraView = hiltViewModel<CameraViewModel>()
 
     val capturedImageUri by cameraView.imageUri.collectAsState()
@@ -63,7 +101,6 @@ fun VaultUnlockedComposable() {
     LaunchedEffect(activityResultRegistry) {
         activityResultRegistry?.let { cameraView.initialize(it) }
     }
-
 
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
