@@ -79,7 +79,7 @@ fun FavouritesList(
                 onClickLikeButton = handleClickLikeRecipe(recipe.idMeal),
                 onClickCard = {handleClickRecipeCard(recipe.idMeal)},
                 liked = true,
-                Modifier
+                modifier = Modifier
                     .fillMaxHeight(0.5f)
                     .fillMaxWidth()
                     .padding(Dimensions.Padding.medium)

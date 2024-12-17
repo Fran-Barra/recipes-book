@@ -33,8 +33,9 @@ import com.recipesbook.ui.theme.Red
 @Composable
 fun RecipeCard(
     recipeModel: RecipeModel,
-    onClickLikeButton: (liked : Boolean)->Unit,
     onClickCard: () -> Unit,
+    likable: Boolean = true,
+    onClickLikeButton: ((liked : Boolean)->Unit)? = null,
     liked : Boolean = false,
     modifier: Modifier = Modifier
         .fillMaxWidth()
@@ -43,9 +44,9 @@ fun RecipeCard(
     var isLiked by remember { mutableStateOf(liked) }
 
 
-    val handleLikeRecipe =  {
+    val handleLikeRecipe : () -> Unit = {
         isLiked = !isLiked
-        onClickLikeButton.invoke(isLiked)
+        onClickLikeButton?.invoke(isLiked)
     }
 
     //strCategory
@@ -71,12 +72,14 @@ fun RecipeCard(
                     modifier = Modifier.weight(1f)
                 )
 
-                IconButton(onClick = handleLikeRecipe) {
-                    Icon(
-                        imageVector = if (isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                        contentDescription = if (isLiked) "Liked" else "Not Liked",
-                        tint = if (isLiked) Red else Gray
-                    )
+                if (likable) {
+                    IconButton(onClick = handleLikeRecipe) {
+                        Icon(
+                            imageVector = if (isLiked) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+                            contentDescription = if (isLiked) "Liked" else "Not Liked",
+                            tint = if (isLiked) Red else Gray
+                        )
+                    }
                 }
             }
         }
