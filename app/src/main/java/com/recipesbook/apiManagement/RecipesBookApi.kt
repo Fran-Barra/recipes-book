@@ -16,4 +16,7 @@ interface RecipesBookApi {
 
     @GET("filter.php")
     fun getRecipeWithGivenIngredient(@Query("i") ingredientName : String) : Call<RecipeRandomResponse>
+
+    @GET("search.php")
+    fun searchRecipe(@Query("s") recipeName : String) : Call<RecipeRandomResponse>
 }

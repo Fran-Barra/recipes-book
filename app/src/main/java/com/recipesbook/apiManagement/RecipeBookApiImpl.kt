@@ -37,6 +37,11 @@ class RecipeBookApiImpl @Inject constructor() {
         manageCall(call, callbacks, R.string.fail_recipe_retrieve)
     }
 
+    fun searchRecipe(recipeName : String, callbacks: RequestResponseCallbacks<RecipeRandomResponse>) {
+        val call  : Call<RecipeRandomResponse> = createService(callbacks.context).searchRecipe(recipeName)
+        manageCall(call, callbacks, R.string.fail_recipes_search_retrive)
+    }
+
     private fun createService(context : Context) : RecipesBookApi {
         val gson = GsonBuilder().registerTypeAdapter(RecipeDetailsResponse::class.java, RecipeDetailsDeserializer()).create()
 
