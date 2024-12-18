@@ -2,6 +2,7 @@ package com.recipesbook.vault
 
 
 
+import android.util.Log
 import androidx.activity.compose.LocalActivityResultRegistryOwner
 import androidx.biometric.BiometricManager
 import androidx.compose.foundation.Image
@@ -17,7 +18,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -42,7 +47,7 @@ import com.recipesbook.security.canAuthenticate
 import com.recipesbook.ui.theme.Dimensions
 
 @Composable()
-fun VaultComposable() {
+fun VaultComposable(navigateToMyRecipe: (String) -> Unit, navigateToCreateRecipe: () -> Unit) {
     val localContext = LocalContext.current
     val viewModel = hiltViewModel<BiometricAuthViewModel, BiometricAuthViewModel.ProfileViewModelFactory> { factory ->
         factory.create(localContext)
@@ -54,7 +59,7 @@ fun VaultComposable() {
 
     when (canAuthenticate) {
         is Available -> {
-            if (isAuthenticated) VaultUnlockedComposable()
+            if (isAuthenticated) VaultUnlockedComposable(navigateToMyRecipe, navigateToCreateRecipe)
             else VaultLockedComposable()
         }
         is NotAvailable -> VaultNotWorkingComposable(errorMessage = canAuthenticate.errorMsg)
@@ -62,29 +67,39 @@ fun VaultComposable() {
 }
 
 @Composable
-fun VaultUnlockedComposable() {
+fun VaultUnlockedComposable(
+    navigateToMyRecipe: (String) -> Unit,
+    navigateToCreateRecipe: () -> Unit
+) {
     val myRecipesView = hiltViewModel<MyRecipeViewModel>()
 
     val myRecipes by myRecipesView.myRecipes.collectAsState(listOf())
 
-    val handleClickRecipeCard = { id : String ->
+    Box {
 
-    }
+        //TODO: move this to a common composable
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            modifier = Modifier.fillMaxHeight()
+        ) {
+            items(myRecipes, key = { it.idMeal }) { recipe ->
+                RecipeCard(
+                    RecipeModel(recipe.idMeal, recipe.name, recipe.imageUrl),
+                    onClickCard = {navigateToMyRecipe(recipe.idMeal)},
+                    likable = false,
+                    modifier = Modifier
+                        .fillMaxHeight(0.5f)
+                        .fillMaxWidth()
+                        .padding(Dimensions.Padding.medium)
+                )
+            }
+        }
 
-    //TODO: move this to a common composable
-    LazyVerticalGrid(
-        columns = GridCells.Fixed(2),
-        modifier = Modifier.fillMaxHeight()
-    ) {
-        items(myRecipes, key = { it.idMeal }) { recipe ->
-            RecipeCard(
-                RecipeModel(recipe.idMeal, recipe.name, recipe.imageUrl),
-                onClickCard = {handleClickRecipeCard(recipe.idMeal)},
-                likable = false,
-                modifier = Modifier
-                    .fillMaxHeight(0.5f)
-                    .fillMaxWidth()
-                    .padding(Dimensions.Padding.medium)
+        Button(navigateToCreateRecipe, Modifier.align(Alignment.BottomEnd).size(Dimensions.Icon.medium), shape = CircleShape) {
+            Icon(
+                imageVector = Icons.Default.Add,
+                contentDescription = "Create new",
+                Modifier.fillMaxSize()
             )
         }
     }

@@ -12,6 +12,7 @@ object Dimensions {
     }
 
     object Icon {
+        val small = 56.dp
         val medium = 64.dp
     }
 
