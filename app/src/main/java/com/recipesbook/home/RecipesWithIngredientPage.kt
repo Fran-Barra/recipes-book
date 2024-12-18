@@ -12,7 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.recipesbook.composable.common.CircularLoader
-import com.recipesbook.composable.common.RecipeCard
+import com.recipesbook.composable.common.recipe.RecipeCard
 import com.recipesbook.composable.common.Retry
 import com.recipesbook.favourites.FavouriteViewModel
 import com.recipesbook.ui.theme.Dimensions

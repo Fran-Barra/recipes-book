@@ -27,6 +27,7 @@ import coil.compose.AsyncImage
 import com.recipesbook.R
 import com.recipesbook.composable.common.CircularLoader
 import com.recipesbook.composable.common.Retry
+import com.recipesbook.composable.common.recipe.BigRecipeImage
 import com.recipesbook.data.recipes.DetailedRecipeModel
 import com.recipesbook.data.recipes.Ingredient
 import com.recipesbook.ui.theme.Dimensions
@@ -53,7 +54,7 @@ fun RecipeDetails(recipe: DetailedRecipeModel) {
         verticalArrangement = Arrangement.spacedBy(Dimensions.SpaceBy.medium)
     ) {
         item {
-            RecipeImage(imgUrl = recipe.imageUrl)
+            BigRecipeImage(imgUrl = recipe.imageUrl)
         }
         item {
             Text(
@@ -96,20 +97,6 @@ fun RecipeDetails(recipe: DetailedRecipeModel) {
             }
         }
     }
-}
-
-@Composable
-fun RecipeImage(imgUrl: String) {
-    AsyncImage(
-        model = imgUrl,
-        contentDescription = "Recipe Image",
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(Dimensions.RecipeImage.height)
-            .clip(RoundedCornerShape(Dimensions.RoundedCorner.medium))
-            .background(MaterialTheme.colorScheme.surface),
-        contentScale = ContentScale.Crop
-    )
 }
 
 @Composable

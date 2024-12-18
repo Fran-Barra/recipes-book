@@ -33,7 +33,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.recipesbook.R
 import com.recipesbook.apiManagement.IngredientResponse
 import com.recipesbook.composable.common.CircularLoader
-import com.recipesbook.composable.common.RecipeCard
+import com.recipesbook.composable.common.recipe.RecipeCard
 import com.recipesbook.composable.common.Retry
 import com.recipesbook.composable.common.SearchBar
 import com.recipesbook.favourites.FavouriteViewModel
