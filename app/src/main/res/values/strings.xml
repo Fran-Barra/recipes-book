@@ -5,7 +5,8 @@
     <string name="search">Search</string>
 
     <!-- VAULT PAGE -->
-    <string name="vault_page_not_build">We are building the vault page here</string>
+    <string name="voult_is_empty">You don\'t have any own recipe, create one</string>
+
 
     <string name="save_recipe">Save recipe</string>
     <string name="take_picture">Take picture</string>

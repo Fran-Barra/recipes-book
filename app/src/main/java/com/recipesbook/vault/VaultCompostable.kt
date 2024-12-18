@@ -29,6 +29,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.recipesbook.R
 import com.recipesbook.composable.common.recipe.RecipeCard
+import com.recipesbook.data.recipes.DetailedRecipeModel
 import com.recipesbook.data.recipes.RecipeModel
 import com.recipesbook.security.Available
 import com.recipesbook.security.BiometricAuthViewModel
@@ -67,31 +68,53 @@ fun VaultUnlockedComposable(
 
     Box {
 
-        //TODO: move this to a common composable
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier.fillMaxHeight()
-        ) {
-            items(myRecipes, key = { it.idMeal }) { recipe ->
-                RecipeCard(
-                    RecipeModel(recipe.idMeal, recipe.name, recipe.imageUrl),
-                    onClickCard = {navigateToMyRecipe(recipe.idMeal)},
-                    likable = false,
-                    modifier = Modifier
-                        .fillMaxHeight(0.5f)
-                        .fillMaxWidth()
-                        .padding(Dimensions.Padding.medium)
-                )
-            }
-        }
+        if (myRecipes.isEmpty()) DisplayEmptyVault()
+        else MyRecipesList(myRecipes, navigateToMyRecipe)
 
-        Button(navigateToCreateRecipe, Modifier.align(Alignment.BottomEnd).size(Dimensions.Icon.medium), shape = CircleShape) {
+        Button(navigateToCreateRecipe,
+            Modifier
+                .align(Alignment.BottomEnd)
+                .size(Dimensions.Icon.medium), shape = CircleShape) {
             Icon(
                 imageVector = Icons.Default.Add,
                 contentDescription = "Create new",
                 Modifier.fillMaxSize()
             )
         }
+    }
+}
+
+//TODO: move this to a common composable
+@Composable
+private fun MyRecipesList(
+    myRecipes: List<DetailedRecipeModel>,
+    navigateToMyRecipe: (String) -> Unit
+) {
+    LazyVerticalGrid(
+        columns = GridCells.Fixed(2),
+        modifier = Modifier.fillMaxHeight()
+    ) {
+        items(myRecipes, key = { it.idMeal }) { recipe ->
+            RecipeCard(
+                RecipeModel(recipe.idMeal, recipe.name, recipe.imageUrl),
+                onClickCard = { navigateToMyRecipe(recipe.idMeal) },
+                likable = false,
+                modifier = Modifier
+                    .fillMaxHeight(0.5f)
+                    .fillMaxWidth()
+                    .padding(Dimensions.Padding.medium)
+            )
+        }
+    }
+}
+
+@Composable
+fun DisplayEmptyVault() {
+    Box(modifier = Modifier.fillMaxSize()) {
+        Text(
+            text = stringResource(R.string.voult_is_empty),
+            modifier = Modifier.align(Alignment.Center)
+        )
     }
 }
 
