@@ -8,7 +8,7 @@ import androidx.room.Query
 @Dao
 interface MyRecipeDao {
     @Insert
-    suspend fun insert(myRecipe: MyRecipe)
+    suspend fun insert(myRecipe: MyRecipe) : Long
     @Query("DELETE FROM myrecipe WHERE id = :id")
     suspend fun deleteById(id: Long)
     @Query("SELECT * FROM myrecipe")
