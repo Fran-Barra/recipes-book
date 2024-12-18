@@ -1,4 +1,4 @@
-package com.recipesbook.composable.common
+package com.recipesbook.composable.common.recipe
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
