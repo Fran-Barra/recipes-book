@@ -38,5 +38,10 @@ object Dimensions {
     object RecipeImage {
         val height = 200.dp
     }
+
+    object SearchBar {
+        val height = 64.dp
+        val padding = 6.dp
+    }
 }
 
