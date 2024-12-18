@@ -88,7 +88,7 @@ fun RecipeCard(
 }
 
 @Composable
-fun RecipeImage(imgUrl: String) {
+fun RecipeImage(imgUrl: String?) {
     AsyncImage(
         model = imgUrl,
         contentDescription = "Recipe Image",
