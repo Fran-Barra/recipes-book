@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name" translatable="false">RecipesBook</string>
 
+    <string name="no_recipes_found">No se encontraron recetas</string>
+    <string name="search">Buscar</string>
+
     <!-- VAULT PAGE -->
     <string name="vault_page_not_build">We are building the vault page here</string>
+
+    <string name="save_recipe">guardar receta</string>
+    <string name="take_picture">tomar foto</string>
 
     <!-- FAVOURITES PAGE -->
     <string name="favourites_no_favourites">You don\'t have favourite recipes</string>
@@ -23,6 +29,8 @@
     <string name="fail_ingredients_retrive">No se pudieron recuperar los ingredientes</string>
     <string name="permisions_were_denied">Los permisos fueron denegados, intenta nuevamente para permitirlos.</string>
     <string name="fail_recipes_search_retrive">No se pudo buscar la receta</string>
+    <string name="fail_save_my_recipe">No se pudo guardar mi receta</string>
+    <string name="saved_my_recipe">La receta se guardó correctamente</string>
 
 
     <!-- BIOMETRIC AUTHENTICATION -->
@@ -37,4 +45,8 @@
 
     <string name="biometric_error_in_auth">Hubo un error en la autenticación.</string>
     <string name="biometric_failed_auth">La autenticación falló, inténtalo de nuevo.</string>
+
+    <!-- GENERAL TRANSLATIONS -->
+    <string name="name">Nombre</string>
+    <string name="instructions">Instrucciones</string>
 </resources>

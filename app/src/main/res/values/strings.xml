@@ -7,6 +7,9 @@
     <!-- VAULT PAGE -->
     <string name="vault_page_not_build">We are building the vault page here</string>
 
+    <string name="save_recipe">Save recipe</string>
+    <string name="take_picture">Take picture</string>
+
     <!-- FAVOURITES PAGE -->
     <string name="favourites_no_favourites">You don\'t have favourite recipes</string>
 
@@ -26,6 +29,8 @@
     <string name="fail_ingredients_retrive">Could not retrieve ingredients</string>
     <string name="permisions_were_denied">The permissions were denied, try again to allow them</string>
     <string name="fail_recipes_search_retrive">Could not search for recipe</string>
+    <string name="fail_save_my_recipe">Failed to save my recipe</string>
+    <string name="saved_my_recipe">Successfully saved the recipe</string>
 
 
     <!-- BIOMETRIC AUTHENTICATION -->
@@ -40,4 +45,8 @@
 
     <string name="biometric_error_in_auth">There was an error in the authentication</string>
     <string name="biometric_failed_auth">The authentication failed, try again</string>
+
+    <!-- GENERAL TRANSLATIONS -->
+    <string name="name">Name</string>
+    <string name="instructions">Instructions</string>
 </resources>
