@@ -5,7 +5,7 @@ import androidx.compose.ui.unit.sp
 
 object Dimensions {
     object NavBar {
-        val height = 42.dp
+        val height = 48.dp
     }
 
     object Text  {
