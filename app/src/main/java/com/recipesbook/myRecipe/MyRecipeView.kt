@@ -113,6 +113,16 @@ class MyRecipeView @Inject constructor(
         _recipe.value = _originalRecipe.value
     }
 
+    fun deleteRecipe(onDelete: ()-> Unit) {
+        if (_originalRecipe.value == null) return
+        viewModelScope.launch {
+            if (_originalRecipe.value != null) {
+                db.myRecipeDao().deleteById(_originalRecipe.value!!.id)
+                onDelete.invoke()
+            }
+        }
+    }
+
 
     private fun loadRecipe(recipeId : Long) {
         _loadingRecipe.value = true

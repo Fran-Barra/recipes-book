@@ -39,6 +39,8 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
         navBarController.navigate("${RecipesBookScreen.Vault.name}/create")
     }
 
+    val navigateToVault = {navBarController.navigate(RecipesBookScreen.Vault.name)}
+
     NavHost(
         navController = navBarController,
         startDestination = RecipesBookScreen.Home.name,
@@ -63,7 +65,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             CreateMyRecipeComposable(navigateToMyRecipe)
         }
         composable(route = "${RecipesBookScreen.Vault.name}/{my-recipe-id}") {
-            MyRecipeComposable()
+            MyRecipeComposable(navigateToVault)
         }
         composable(
             route = "${RecipesBookScreen.Recipe.name}/{recipe-id}",
