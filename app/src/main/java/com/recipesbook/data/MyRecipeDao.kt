@@ -13,4 +13,6 @@ interface MyRecipeDao {
     suspend fun deleteById(id: Long)
     @Query("SELECT * FROM myrecipe")
     fun getAllMyRecipes(): LiveData<List<MyRecipe>>
+    @Query("SELECT * FROM myrecipe WHERE id = :id LIMIT 1")
+    suspend fun getMyRecipeById(id: Long): MyRecipe?
 }
