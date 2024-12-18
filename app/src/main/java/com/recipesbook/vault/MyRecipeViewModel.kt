@@ -35,7 +35,6 @@ class MyRecipeViewModel @Inject constructor(
     }
 
     private fun mapMyRecipesList(recipesList : List<MyRecipe>) : List<DetailedRecipeModel> {
-        if (recipesList.isEmpty()) return listOf(DetailedRecipeModel("1", "Test", "", "test instructions"))
         return recipesList.map(::toDetailedRecipeModel)
     }
 
