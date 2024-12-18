@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MyRecipeViewModel @Inject constructor(
+class MyRecipesViewModel @Inject constructor(
   @ApplicationContext context: Context,
 ) : ViewModel() {
     private val recipesBookDatabase = RecipesBookDatabase.getDatabase(context)

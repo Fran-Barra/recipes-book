@@ -61,7 +61,7 @@ fun VaultUnlockedComposable(
     navigateToMyRecipe: (String) -> Unit,
     navigateToCreateRecipe: () -> Unit
 ) {
-    val myRecipesView = hiltViewModel<MyRecipeViewModel>()
+    val myRecipesView = hiltViewModel<MyRecipesViewModel>()
 
     val myRecipes by myRecipesView.myRecipes.collectAsState(listOf())
 
