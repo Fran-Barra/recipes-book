@@ -1,5 +1,6 @@
 package com.recipesbook.navigations
 
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
@@ -13,7 +14,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import com.recipesbook.ui.theme.Dimensions
 
 @Composable
 fun BottomBar(onNavigate: (String)->Unit) {
@@ -37,7 +40,7 @@ fun TabView(
         mutableIntStateOf(0)
     }
 
-    NavigationBar {
+    NavigationBar(modifier = Modifier.height(Dimensions.NavBar.height)) {
         tabBarItems.forEachIndexed { i, item ->
             NavigationBarItem(
                 selected = i == selectedTabIndex,

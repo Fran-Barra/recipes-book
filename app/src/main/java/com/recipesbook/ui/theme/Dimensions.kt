@@ -4,6 +4,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 object Dimensions {
+    object NavBar {
+        val height = 42.dp
+    }
+
     object Text  {
         val small = 8.sp
         val medium = 12.sp
