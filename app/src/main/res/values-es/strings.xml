@@ -15,11 +15,14 @@
     <!-- ERROR -->
     <string name="fail_retrieving_data">algo salió mal al recuperar los datos</string>
     <string name="retry">rever</string>
+    <string name="fail_capture_picture">no se pudo capturar una imagen</string>
 
     <!-- TOAST -->
     <string name="something_went_wrong">algo salió mal</string>
     <string name="fail_recipe_retrieve">No se pudo recuperar la receta</string>
     <string name="fail_ingredients_retrive">No se pudieron recuperar los ingredientes</string>
+    <string name="permisions_were_denied">Los permisos fueron denegados, intenta nuevamente para permitirlos.</string>
+    <string name="fail_recipes_search_retrive">No se pudo buscar la receta</string>
 
 
     <!-- BIOMETRIC AUTHENTICATION -->

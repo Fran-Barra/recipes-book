@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name" translatable="false">RecipesBook</string>
 
+    <string name="no_recipes_found">No recipes found</string>
+    <string name="search">Search</string>
+
     <!-- VAULT PAGE -->
     <string name="vault_page_not_build">We are building the vault page here</string>
 
@@ -22,6 +25,7 @@
     <string name="fail_recipe_retrieve">Could not retrieve recipe</string>
     <string name="fail_ingredients_retrive">Could not retrieve ingredients</string>
     <string name="permisions_were_denied">The permissions were denied, try again to allow them</string>
+    <string name="fail_recipes_search_retrive">Could not search for recipe</string>
 
 
     <!-- BIOMETRIC AUTHENTICATION -->
