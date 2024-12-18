@@ -3,6 +3,8 @@ package com.recipesbook.navigations
 import Home
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -58,7 +60,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             VaultComposable(navigateToMyRecipe, navigateToCreateRecipe)
         }
         composable(route = "${RecipesBookScreen.Vault.name}/create") {
-            CreateMyRecipeComposable()
+            CreateMyRecipeComposable(navigateToMyRecipe)
         }
         composable(route = "${RecipesBookScreen.Vault.name}/{my-recipe-id}") {
             MyRecipeComposable()
