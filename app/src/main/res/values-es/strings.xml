@@ -31,6 +31,7 @@
     <string name="fail_recipes_search_retrive">No se pudo buscar la receta</string>
     <string name="fail_save_my_recipe">No se pudo guardar mi receta</string>
     <string name="saved_my_recipe">La receta se guardó correctamente</string>
+    <string name="my_recipe_not_found">La receta no fue encontrada.</string>
 
 
     <!-- BIOMETRIC AUTHENTICATION -->
@@ -49,4 +50,6 @@
     <!-- GENERAL TRANSLATIONS -->
     <string name="name">Nombre</string>
     <string name="instructions">Instrucciones</string>
+    <string name="cancel">Cancelar</string>
+    <string name="save">Ahorrar</string>
 </resources>
