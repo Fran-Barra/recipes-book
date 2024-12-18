@@ -37,7 +37,7 @@ fun NavHostComposable(innerPadding: PaddingValues, navBarController: NavHostCont
             .padding(horizontal = Dimensions.Padding.medium)
     ) {
         composable(route = RecipesBookScreen.Home.name) {
-            Home(navigateToRecipes)
+            Home(navigateToRecipes, navigateToRecipePage)
         }
         composable(route = "${RecipesBookScreen.Home.name}/{ingredient-name}/${RecipesBookScreen.HomeRecipes}") {
             RecipesWithIngredientPage(navigateToRecipePage)

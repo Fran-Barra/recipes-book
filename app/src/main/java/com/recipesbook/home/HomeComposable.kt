@@ -43,7 +43,10 @@ import com.recipesbook.ui.theme.Dimensions
 
 
 @Composable
-fun Home(navigateToRecipePage : (ingredientName : String) -> Unit) {
+fun Home(
+    navigateToRecipesPage : (ingredientName : String) -> Unit,
+    navigateToRecipePage : (mealId : String) -> Unit
+) {
     val ingredientViewModel = hiltViewModel<IngredientViewModel>()
     val recipesSearch = hiltViewModel<SearchViewModel>()
     val favouriteViewModel = hiltViewModel<FavouriteViewModel>()
@@ -90,7 +93,7 @@ fun Home(navigateToRecipePage : (ingredientName : String) -> Unit) {
             Box {
                 if (loadingIngredients) CircularLoader()
                 else if (showRetry) Retry(onClickRetry = { ingredientViewModel.retry() })
-                else IngredientsList(ingredients = ingredients, navigateToRecipePage)
+                else IngredientsList(ingredients = ingredients, navigateToRecipesPage)
             }
         } else {
             //TODO: move this logic into a component
@@ -190,5 +193,8 @@ fun IngredientElement(ingredient: IngredientResponse, modifier : Modifier, navig
 @Preview
 @Composable
 fun PreviewHome() {
-    Home { idMeal -> println("Navigate to recipe $idMeal") }
+    Home(
+        { ingridient -> println("Navigate to ingidient recipes") },
+        { idMeal -> println("Navigate to recipe $idMeal") }
+    )
 }
